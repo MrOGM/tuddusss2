@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tudusss</title>
+
+    <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+    <div class="container3">
+        <div class="section3 left-column"> 
+
+            
+                <% if (Array.isArray(locals.Arraytudus) && locals.Arraytudus.length > 0) {  %>
+                    <form id="myForm2" action="/delete" method="post">
+                    
+                        <% Arraytudus.forEach((item) =>{ %> 
+                        
+                            <div class="container dadis">
+                                <input type = "checkbox" name= "checkbox" value = "<%= item.name %>" onChange="this.form.submit()">
+                                <p><%= item.name %> </p>
+
+                            </div>
+                        <% }) %>
+                   
+                    </form>
+                <% } %>
+            
+        </div>
+
+        <div class="section right-column"> 
+            <!-- form to put the tasks --> 
+            <form id="myForm" action="/submit" method="post">
+                <label class="label">Add a task</label>
+                <!-- tudu -->
+                <input class="input" type="text" id="tuduData" name="tuduData" required placeholder="what now?">
+            </form>
+        </div>
+    </div>
+
+
+
+    
+    <script>
+        const form = document.getElementById("myForm");
+        const inputField = document.getElementById("tuduData");
+
+        inputField.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                event.preventDefault(); // Prevent form submission on Enter
+                form.submit(); // Manually submit the form
+            }
+        });
+    </script>
+
+</body>
+</html>
